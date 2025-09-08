@@ -82,6 +82,12 @@ window.FilterManager = (function() {
 
   // Function to hide PBC Components column and create horizontal filter bar
   const toggleColumn = (config) => {
+    console.log('\n🚀 toggleColumn called with:', {
+      columnId: config.columnId,
+      columnLabel: config.columnLabel,
+      dataKey: config.dataKey
+    });
+
     const {
       columnId, columnLabel, dataKey, colorIndex,
       namespace, strategiesId, partnersId, outputsId, immediateOutputsId, intermediateOutputsId, longTermOutputsId,
@@ -213,8 +219,13 @@ window.FilterManager = (function() {
     
     // Create horizontal bar if it doesn't exist
     if (!horizontalBar) {
+        console.log('🔍 Creating new container for:', dataKey);
+        console.log('Current selected items:', [...selectedItems]);
+        
         // Create main container for title and horizontal bar
         const pbcContainer = addElement(dashboard, 'div', `pbc-container-${dataKey}`);
+        console.log('📦 Created container:', `pbc-container-${dataKey}`);
+        
         pbcContainer.style.display = 'flex';
         pbcContainer.style.alignItems = 'center';
         pbcContainer.style.gap = '20px';
@@ -222,19 +233,29 @@ window.FilterManager = (function() {
         pbcContainer.style.padding = '15px';
         pbcContainer.style.flexWrap = 'wrap'; // Allow wrapping on smaller screens
         
-        // Create left side title for current selection
-        const currentSelectionTitle = addElement(pbcContainer, 'div', `current-selection-${dataKey}`);
-        currentSelectionTitle.style.fontSize = '2.5em';
-        currentSelectionTitle.style.fontWeight = 'bold';
-        currentSelectionTitle.style.flex = '1';
-        currentSelectionTitle.style.minWidth = '250px';
-        currentSelectionTitle.style.marginBottom = '10px'; // Space when wrapped
+        // Get gradient colors (needed for both title and horizontal bar)
         const currentGradient = window.ColorManager.getCurrentBrandGradient();
-        currentSelectionTitle.style.color = currentGradient[9];
-        currentSelectionTitle.textContent = 'Select a PBC Component';
         
-        // Store reference to title for updates
-        window.currentPBCTitle = currentSelectionTitle;
+        // Only create title for PBC Components
+        if (dataKey === 'pbcComponents') {
+          console.log('🎯 Creating title for PBC Components');
+          const currentSelectionTitle = addElement(pbcContainer, 'div', `current-selection-${dataKey}`);
+          console.log('📝 Created title element:', `current-selection-${dataKey}`);
+          
+          currentSelectionTitle.style.fontSize = '2.5em';
+          currentSelectionTitle.style.fontWeight = 'bold';
+          currentSelectionTitle.style.flex = '1';
+          currentSelectionTitle.style.minWidth = '250px';
+          currentSelectionTitle.style.marginBottom = '10px'; // Space when wrapped
+          currentSelectionTitle.style.color = currentGradient[9];
+          currentSelectionTitle.textContent = 'All Pillars';
+          
+          // Store reference to title for updates
+          window.currentPBCTitle = currentSelectionTitle;
+          console.log('🔗 Stored title reference for PBC Components');
+        } else {
+          console.log('⏭️ Skipping title creation for:', dataKey);
+        }
         
         // Create right side horizontal bar
         horizontalBar = addElement(pbcContainer, 'div', `horizontal-${dataKey}`);
@@ -416,7 +437,7 @@ window.FilterManager = (function() {
       }
   };
 
-  // Function to update the PBC title display
+// Function to update the PBC title display
   const updatePBCTitle = (pbcComponent = null, data = null) => {
     if (!window.currentPBCTitle) return;
     
@@ -430,7 +451,6 @@ window.FilterManager = (function() {
       window.currentPBCTitle.style.color = neutralColor;
       }
   };
-
   // Function to clear all filters and show all columns
   const unfilterColumns = (config) => {
     const {

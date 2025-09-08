@@ -570,7 +570,25 @@ window.onload = async function () {
     // Clear existing content - more thorough clearing
     researchBody.innerHTML = ''; // Complete clear instead of selective removal
 
-    // Show Activities instead of research
+    // Show Impact Goal first
+    const goalHeader = createElement(researchBody, 'div', 'goal-header');
+    goalHeader.innerText = 'Impact Goal';
+    
+    // Create goal content
+    const goalContent = createElement(researchBody, 'div', null, 'goal-content');
+    
+    // Since Impact Goal is the same for all strategies, we can use the first one
+    if (data.impactGoal && data.impactGoal.trim()) {
+      goalContent.innerText = data.impactGoal;
+    } else {
+      goalContent.innerText = 'No impact goal available.';
+    }
+
+    // Add some spacing
+    const spacer = createElement(researchBody, 'div');
+    spacer.style.height = '20px';
+
+    // Show Activities section
     const strategy = strategyList[strategyIndex];
     
     if (strategy.activities && strategy.activities.trim()) {
@@ -888,8 +906,9 @@ window.onload = async function () {
   // INITIAL SETUP & AUTO-SELECTION
   // ========================================
   
-  // Hide PBC Components column by default and create horizontal filter
+  // Hide PBC Components and Partners columns by default and create horizontal filter
   toggleColumnVisibility(COLUMN_IDS.pbcComponents, 'PBC Components', 'pbcComponents', 0, true);
+  toggleColumnVisibility(COLUMN_IDS.partners, 'Partners', 'partners', 1, true);
   
   // Auto-select the first PBC component on load
   setTimeout(() => {

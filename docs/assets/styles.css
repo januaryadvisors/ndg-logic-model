@@ -369,6 +369,10 @@
   border-color: #7ED7A2;
 }
 
+#momentum-dashboard-horizontal-partners {
+  display: none !important;
+}
+
 @media screen and (max-width: 1280px) {
   #momentum-dashboard {
     padding: 48px 24px;
