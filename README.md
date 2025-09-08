@@ -31,7 +31,7 @@ This application is hosted on Siteground as part of the January Advisors website
 
 ### Updating data
 
-The data in `/data` comes from https://docs.google.com/spreadsheets/d/1OxWUeeWrLmXPf9dQKg9YiAl5Gmi50s0Dl4OR3tVwzS8/edit?gid=1482534373#gid=1482534373
+The data in `/data` comes from https://docs.google.com/spreadsheets/d/18fCKyaEIi5xZynp_44XRtcv3a8-1sauGDo4GuxP4IcE/edit?gid=1442531113#gid=1442531113
 If updates to the data are made to the spreadsheet, download the sheet(s) where changes were made and replace the respective CSVs in the data directory (note: if there are multiple sheets with the same name, the sheet with no date in the name is the current sheet; the dates on some sheet names represent the date we switched to a newer sheet). Then run `cd data; npm install; npm run process-data`.
 
 ### Web Locations

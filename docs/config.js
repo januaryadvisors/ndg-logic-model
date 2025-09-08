@@ -15,11 +15,11 @@ window.DASHBOARD_CONFIG = {
   // WARNING: These URLs are visible in client-side code
   // Only use with PUBLIC Google Sheets for security
   
-  GOOGLE_SHEET_ID: '1xMLrp1nNKhQeHAnBdN-BpDdjVj_uuLIV06hKPe8wtBk',
+  GOOGLE_SHEET_ID: '18fCKyaEIi5xZynp_44XRtcv3a8-1sauGDo4GuxP4IcE',
   
   SHEET_GIDS: {
     logic_model_expanded: '1442531113',  // Logic model Expanded sheet
-    research: '477836847',              // Use same sheet for now (no research data)
+    research: '1030263523',              // Use same sheet for now (no research data)
     header_tooltips: '459672780',       // Use same sheet for now  
     input_tooltips: '304412178'         // Use same sheet for now
   },

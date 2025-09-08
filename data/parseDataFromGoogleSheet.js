@@ -5,7 +5,7 @@ const parseFromGoogleSheet = async () => {
   const d3dsv = await import('d3-dsv');
 
   // Google Sheet ID from your URL
-  const SHEET_ID = '1sSudr0w4J2Bc-CbY_abNqglTn9sEu-imJ8MydYHOT7A';
+  const SHEET_ID = '18fCKyaEIi5xZynp_44XRtcv3a8-1sauGDo4GuxP4IcE';
   
   // Function to fetch CSV data from Google Sheet using node-fetch
   const fetchCSVFromSheet = async (sheetId, gid = 0) => {
@@ -28,7 +28,7 @@ const parseFromGoogleSheet = async () => {
 
   try {
     // Fetch data from Google Sheets using the correct gid values    
-    const modelRaw = await fetchCSVFromSheet(SHEET_ID, 1482534373); // Sheet 1: Logic model data
+    const modelRaw = await fetchCSVFromSheet(SHEET_ID, 1442531113); // Sheet 1: Logic model data
     const researchRaw = await fetchCSVFromSheet(SHEET_ID, 1030263523); // Sheet 2: Research data
     const headerTooltipsRaw = await fetchCSVFromSheet(SHEET_ID, 459672780); // Sheet 3: Header tooltips
     const inputTooltipsRaw = await fetchCSVFromSheet(SHEET_ID, 304412178); // Sheet 4: Input tooltips
