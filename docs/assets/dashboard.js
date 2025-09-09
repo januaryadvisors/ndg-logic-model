@@ -171,7 +171,7 @@ window.onload = async function () {
     },
     [COLUMN_IDS.immediateOutputs]: {
       columnColor: brandGradient[4],
-      label: 'Immediate Outcomes',
+      label: 'Short-term Outcomes',
     },
     [COLUMN_IDS.intermediateOutputs]: {
       columnColor: brandGradient[5],
