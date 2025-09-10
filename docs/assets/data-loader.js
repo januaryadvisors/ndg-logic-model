@@ -289,13 +289,6 @@ window.DataLoader = (function() {
           });
         });
 
-        // Get Impact Goal - it's the same for all rows, find first non-empty one
-        const impactGoal = model.reduce((goal, row) => {
-          if (goal) return goal; // If we already found a goal, keep it
-          return (row['Impact Goal'] || '').trim(); // Otherwise try this row
-        }, '');
-        console.log('🎯 Impact Goal loaded:', impactGoal); // Debug log
-
         // Build final data object
         const data = {
           headerTooltips: headerTooltips.map(t => t[1]),
@@ -310,8 +303,7 @@ window.DataLoader = (function() {
           outputs,
           immediateOutputs,
           intermediateOutputs,
-          longTermOutputs,
-          impactGoal,
+          longTermOutputs
         };
 
         console.log('🎯 FINAL DATA OBJECT:');
